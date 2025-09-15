@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MESSI BUCU RONADO</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="rainbow-outline" aria-hidden="true"></div>
+  <canvas id="particles"></canvas>
+  <canvas id="snow"></canvas>
+
+  <div class="overlay" id="overlay">
+    <div class="login-box card">
+      <div style="display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:8px">
+        <div class="logo" style="width:48px;height:48px;border-radius:10px;font-size:16px">LC</div>
+        <div style="text-align:left">
+          <strong>MESSI BUCU RONADO</strong>
+          <div class="subtitle-small">Nhập mật khẩu để mở menu</div>
+        </div>
+      </div>
+      <input id="pw" placeholder="Nhập mật khẩu..." aria-label="Mật khẩu">
+      <button class="btn primary" id="pwBtn">Mở khóa</button>
+      <div class="small-note">Mật khẩu cần đúng chính xác: <code>KEY-LIVECHULATRUNG1.0</code></div>
+    </div>
+  </div>
+
+  <div class="app" id="app" aria-hidden="true">
+    <header>
+      <div class="brand">
+        <div class="logo">TR</div>
+        <div>
+          <h1>Menu Tool — Trung</h1>
+          <p class="subtitle">Bản demo: Nhẹ Tâm · Fix Rung · Nhạy Tâm · Aimlock · Tâm Ảo · Optimion · Headlock · AimBody</p>
+        </div>
+      </div>
+      <div class="controls">
+        <span class="badge" id="statusBadge">Status: <strong>Offline</strong></span>
+        <button class="btn" id="resetBtn">Reset All</button>
+        <button class="btn" id="helpBtn">Hướng dẫn</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="left">
+        <div class="card">
+          <div class="group-title"><div><strong>Chức năng (gộp 3)</strong><div class="subtitle-small">Nhẹ Tâm · Fix Rung · Nhạy Tâm</div></div><div class="badge">Group A</div></div>
+          <div class="toggle-row">
+            <div class="name"><div class="label">Nhẹ Tâm</div><div class="small">Giảm độ nặng cảm</div></div>
+            <div class="switch" data-key="nheTam" tabindex="0"><div class="knob"></div></div>
+          </div>
+          <div class="toggle-row">
+            <div class="name"><div class="label">Fix Rung</div><div class="small">Giảm rung / ổn định</div></div>
+            <div class="switch" data-key="fixRung" tabindex="0"><div class="knob"></div></div>
+          </div>
+          <div class="toggle-row">
+            <div class="name"><div class="label">Nhạy Tâm</div><div class="small">Tăng nhạy cảm</div></div>
+            <div class="switch" data-key="nhayTam" tabindex="0"><div class="knob"></div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="group-title"><div><strong>Advanced (gộp 5)</strong><div class="subtitle-small">Aimlock · Tâm Ảo · Optimion · Headlock · AimBody</div></div><div class="badge">Group B</div></div>
+          <div class="toggle-row">
+            <div class="name"><div class="label">Aimlock</div><div class="small">Khóa tâm mục tiêu</div></div>
+            <div class="switch" data-key="aimlock" tabindex="0"><div class="knob"></div></div>
+          </div>
+          <div class="toggle-row">
+            <div class="name"><div class="label">Tâm Ảo</div><div class="small">Tạo tâm giả / overlay</div></div>
+            <div class="switch" data-key="tamAo" tabindex="0"><div class="knob"></div></div>
+          </div>
+          <div class="toggle-row">
+            <div class="name"><div class="label">Optimion</div><div class="small">Tối ưu hiệu suất</div></div>
+            <div class="switch" data-key="optimion" tabindex="0"><div class="knob"></div></div>
+          </div>
+          <div class="toggle-row">
+            <div class="name"><div class="label">Headlock</div><div class="small">Ưu tiên headshot</div></div>
+            <div class="switch" data-key="headlock" tabindex="0"><div class="knob"></div></div>
+          </div>
+          <div class="toggle-row">
+            <div class="name"><div class="label">AimBody</div><div class="small">Aim vào thân / thân trên</div></div>
+            <div class="switch" data-key="aimbody" tabindex="0"><div class="knob"></div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="group-title"><strong>Thông tin & hành động</strong><div class="badge">Tools</div></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn" id="exportState">Sao lưu trạng thái</button>
+            <button class="btn" id="importState">Phục hồi (JSON)</button>
+            <button class="btn" id="demoNotif">Bật thử thông báo</button>
+          </div>
+          <div class="small-note">Bạn có thể reset toàn bộ trạng thái bằng nút <strong>Reset All</strong> ở trên.</div>
+        </div>
+      </section>
+
+      <aside class="right">
+        <div class="card">
+          <div class="group-title"><strong>Trạng thái</strong><div class="badge" id="activeCount">Active: 0</div></div>
+          <div style="margin-top:8px">
+            <div id="statusList" style="display:flex;flex-direction:column;gap:8px"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="group-title"><strong>Hiệu ứng</strong><div class="badge">Visuals</div></div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <label style="display:flex;align-items:center;gap:8px">
+              <input id="toggleSnow" type="checkbox" checked> Tuyết rơi
+            </label>
+            <label style="display:flex;align-items:center;gap:8px">
+              <input id="toggleParticles" type="checkbox" checked> Particles
+            </label>
+            <label style="display:flex;align-items:center;gap:8px">
+              <input id="toggleRainbow" type="checkbox" checked> Rainbow xung quanh
+            </label>
+          </div>
+        </div>
+
+        <footer>
+          <div>© Trung — Demo menu · Mật khẩu: <code>KEY-LIVECHULATRUNG1.0</code></div>
+          <div style="margin-top:6px;color:var(--muted)">Không có hành vi xâm phạm — chỉ demo giao diện</div>
+        </footer>
+      </aside>
+    </main>
+  </div>
+
+  <div id="toast" aria-live="polite"></div>
+  <script src="particles.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

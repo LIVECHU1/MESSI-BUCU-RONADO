@@ -1,0 +1,62 @@
+:root{
+  --bg:#071020;
+  --panel: rgba(255,255,255,0.04);
+  --accent: linear-gradient(90deg,#ff6b6b,#ffd166,#6bffb8,#6bd0ff,#c56bff);
+  --glass: rgba(255,255,255,0.06);
+  --success: #7be495;
+  --danger: #ff7b7b;
+  --text: #e6f0ff;
+  --muted: #a9b5c8;
+  --radius:14px;
+}
+*{box-sizing:border-box;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial}
+html,body{height:100%;margin:0;background: radial-gradient(ellipse at top left,#081226 0%, #030311 70%), var(--bg); color:var(--text); -webkit-font-smoothing:antialiased;}
+canvas#particles, canvas#snow {position:fixed;left:0;top:0;pointer-events:none;z-index:0;}
+.rainbow-outline{
+  position:fixed;inset:12px;border-radius:20px;padding:3px;
+  background: conic-gradient(from 0deg, #ff4d4d, #ffd34d, #4dffb0, #4db8ff, #b54dff, #ff4d4d);
+  z-index:1;
+  filter:blur(10px) saturate(1.2) opacity(.7);
+  mix-blend-mode:screen;
+}
+.app{
+  position:relative; z-index:2;
+  max-width:980px;margin:40px auto;padding:28px;border-radius:var(--radius);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  box-shadow: 0 8px 30px rgba(2,6,23,0.8);
+  border: 1px solid rgba(255,255,255,0.04);
+  overflow:hidden;
+  backdrop-filter: blur(6px) saturate(1.1);
+}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px;}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#6bd0ff,#c56bff);display:flex;align-items:center;justify-content:center;font-weight:700;color:#0b1020;font-size:20px;box-shadow: 0 6px 18px rgba(197,107,255,0.15), 0 1px 0 rgba(255,255,255,0.03) inset;}
+h1{font-size:18px;margin:0}
+.subtitle{margin:0;color:var(--muted);font-size:13px}
+.subtitle-small{font-size:13px;color:var(--muted);margin:0}
+main{display:flex;gap:20px}
+.left{flex:1;min-width:320px}
+.right{width:360px}
+.card{background:var(--panel);padding:14px;border-radius:12px;margin-bottom:14px;border:1px solid rgba(255,255,255,0.03)}
+.group-title{font-weight:700;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:10px;border-radius:10px;margin:6px 0;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));border:1px solid rgba(255,255,255,0.02)}
+.name{display:flex;flex-direction:column}
+.name .label{font-size:15px}
+.name .small{font-size:12px;color:var(--muted)}
+.switch{--w:56px;--h:30px;width:var(--w);height:var(--h);background:rgba(255,255,255,0.06);border-radius:999px;padding:4px;display:flex;align-items:center;cursor:pointer;transition:all .25s}
+.switch .knob{width:calc(var(--h) - 8px);height:calc(var(--h) - 8px);background:white;border-radius:999px;transform:translateX(0);transition:all .22s;box-shadow:0 6px 14px rgba(2,6,23,0.6)}
+.switch.on{background:linear-gradient(90deg,#6bd0ff,#c56bff);transform:scale(1.02)}
+.switch.on .knob{transform:translateX(calc(var(--w) - var(--h)));background:white}
+.badge{font-size:12px;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.03);color:var(--muted)}
+.controls{display:flex;gap:10px;align-items:center}
+button.btn{background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.04);padding:8px 12px;border-radius:10px;color:var(--text);cursor:pointer}
+button.primary{background:linear-gradient(90deg,#6bd0ff,#c56bff);color:#041022}
+.small-note{font-size:12px;color:var(--muted);margin-top:6px}
+#toast{position:fixed;right:18px;bottom:18px;z-index:9999;min-width:220px}
+.toast-item{background:rgba(10,18,30,0.95);color:var(--text);padding:10px 14px;border-radius:10px;margin-top:8px;box-shadow:0 8px 24px rgba(2,6,23,0.6);border-left:4px solid var(--success)}
+.overlay{position:fixed;inset:0;background:linear-gradient(180deg, rgba(2,6,23,0.7), rgba(2,6,23,0.9));display:flex;align-items:center;justify-content:center;z-index:999}
+.login-box{width:420px;max-width:92%;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:22px;border-radius:14px;border:1px solid rgba(255,255,255,0.04);text-align:center}
+.login-box input{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:rgba(0,0,0,0.25);color:var(--text);margin-top:10px}
+.login-box button{margin-top:12px;width:100%}
+footer{margin-top:12px;color:var(--muted);font-size:13px;text-align:center}
+@media (max-width:880px){ main{flex-direction:column} .right{width:100%} }
